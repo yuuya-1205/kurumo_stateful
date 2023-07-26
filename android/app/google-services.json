@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "810648563142",
+    "project_id": "kurumostateful",
+    "storage_bucket": "kurumostateful.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810648563142:android:70878ea961959d23bc16c7",
+        "android_client_info": {
+          "package_name": "com.example.kurumo_stateful"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810648563142-t7s0aqu5mlgp9haq1qnigdn5fjhb5kfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMimMLf5vGvYAEI0fo2fwdgQxivzeY-Gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810648563142-t7s0aqu5mlgp9haq1qnigdn5fjhb5kfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
