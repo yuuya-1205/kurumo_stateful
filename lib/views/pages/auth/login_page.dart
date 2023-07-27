@@ -30,6 +30,17 @@ class _LoginPageState extends State<LoginPage> {
   //   );
   // }
 
+  //処理をまとめる。
+  //disposeもここに書く
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
 
   ///setStateで呼ばれたら上から順番に再描画する。
@@ -159,12 +170,4 @@ class _LoginPageState extends State<LoginPage> {
   ///状態を破棄するために用いる。
   ///disposeがないと状態を持ったまま
   ///再描画が行われることもあるのでバグになりやすいの？
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
 }

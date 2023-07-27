@@ -21,20 +21,18 @@ class InputForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: TextFormField(
-        validator: validator,
-        controller: controller,
-        decoration: InputDecoration(
-          suffixIcon: Icon(icon),
-          fillColor: ColorManager.fillGray,
-          filled: true,
-          border: InputBorder.none,
-          hintText: hintText,
-          labelText: labelText,
-          labelStyle: const TextStyle(
-            color: ColorManager.textGray,
-          ),
+    return TextFormField(
+      validator: validator,
+      controller: controller,
+      decoration: InputDecoration(
+        suffixIcon: Icon(icon),
+        fillColor: ColorManager.fillGray,
+        filled: true,
+        border: InputBorder.none,
+        hintText: hintText,
+        labelText: labelText,
+        labelStyle: const TextStyle(
+          color: ColorManager.textGray,
         ),
       ),
     );

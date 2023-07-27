@@ -1,38 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kurumo_stateful/repositories/auth_repository.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kurumo_stateful/util/color.dart';
 import 'package:kurumo_stateful/views/components/button.dart';
 import 'package:kurumo_stateful/views/components/input_form.dart';
 import 'package:kurumo_stateful/views/pages/top/top_page.dart';
 
-class ResisterPage extends StatefulWidget {
+final emailProvider = StateProvider((ref) {
+  return TextEditingController();
+});
+
+final passwordProvider = StateProvider((ref) {
+  return TextEditingController();
+});
+
+class ResisterPage extends ConsumerWidget {
   const ResisterPage({super.key});
 
   @override
-  State<ResisterPage> createState() => _ResisterPageState();
-}
-
-class _ResisterPageState extends State<ResisterPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  String errorMessage = '';
-  // late AuthRepository firebaseAuth;
-
-  // Future<void> authUp({
-  //   required String email,
-  //   required String password,
-  // }) async {
-  //   firebaseAuth.signUp(
-  //     email: email,
-  //     password: password,
-  //   );
-  // }
-
-  @override
-
-  ///setStateで呼ばれたら上から順番に再描画する。
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final emailController = ref.watch(emailProvider);
+    final passwordController = ref.watch(passwordProvider);
+    String errorMessage = '';
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -122,17 +111,5 @@ class _ResisterPageState extends State<ResisterPage> {
         ),
       ),
     );
-  }
-
-  ///状態を破棄するために用いる。
-  ///disposeがないと状態を持ったまま
-  ///再描画が行われることもあるのでバグになりやすいの？
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    // TODO: implement dispose
-    super.dispose();
   }
 }
