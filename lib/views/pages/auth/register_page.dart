@@ -4,27 +4,26 @@ import 'package:kurumo_stateful/repositories/auth_repository.dart';
 import 'package:kurumo_stateful/util/color.dart';
 import 'package:kurumo_stateful/views/components/button.dart';
 import 'package:kurumo_stateful/views/components/input_form.dart';
-import 'package:kurumo_stateful/views/pages/auth/register_page.dart';
 import 'package:kurumo_stateful/views/pages/top/top_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class ResisterPage extends StatefulWidget {
+  const ResisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ResisterPage> createState() => _ResisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ResisterPageState extends State<ResisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   String errorMessage = '';
   // late AuthRepository firebaseAuth;
 
-  // Future<void> authLogin({
+  // Future<void> authUp({
   //   required String email,
   //   required String password,
   // }) async {
-  //   firebaseAuth.signIn(
+  //   firebaseAuth.signUp(
   //     email: email,
   //     password: password,
   //   );
@@ -65,10 +64,12 @@ class _LoginPageState extends State<LoginPage> {
               labelText: "パスワード",
             ),
             const SizedBox(
-              height: 16,
+              height: 8,
             ),
-            const Text(
-              'パスワード忘れ',
+            const InputForm(
+              icon: Icons.hide_source_outlined,
+              hintText: "パスワード確認",
+              labelText: "パスワード確認",
             ),
             const SizedBox(
               height: 32,
@@ -78,13 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                 final email = emailController.text;
                 final password = passwordController.text;
                 try {
-                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  ///repositoryパターンで使うこと。
+                  //  await authUp(email: email, password: password);
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: email,
                     password: password,
                   );
-
-                  ///repositoryパターンで使うこと。
-                  // await authLogin(email: email, password: password);
                   // ignore: use_build_context_synchronously
                   await Navigator.pushReplacement(
                     context,
@@ -110,45 +110,13 @@ class _LoginPageState extends State<LoginPage> {
                 }
               },
               backgroundColor: ColorManager.primary,
-              text: "ログイン",
+              text: "新規登録",
             ),
             const SizedBox(
               height: 16,
             ),
-            const Text(
-              'または',
-            ),
             const SizedBox(
               height: 32,
-            ),
-            Button(
-              onPressed: () {},
-              backgroundColor: ColorManager.primary,
-              text: "Google",
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            Button(
-              onPressed: () {},
-              backgroundColor: ColorManager.primary,
-              text: "Apple",
-            ),
-            const SizedBox(
-              height: 74,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: ((context) => const ResisterPage()),
-                  ),
-                );
-              },
-              child: const Text(
-                '新規登録',
-              ),
             ),
           ],
         ),

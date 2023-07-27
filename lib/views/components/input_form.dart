@@ -9,6 +9,7 @@ class InputForm extends StatelessWidget {
     required this.labelText,
     this.controller,
     this.icon,
+    this.validator,
   });
 
   final InputDecoration? decoration;
@@ -16,11 +17,13 @@ class InputForm extends StatelessWidget {
   final String? labelText;
   final TextEditingController? controller;
   final IconData? icon;
+  final dynamic validator;
 
   @override
   Widget build(BuildContext context) {
     return Flexible(
       child: TextFormField(
+        validator: validator,
         controller: controller,
         decoration: InputDecoration(
           suffixIcon: Icon(icon),
@@ -35,6 +38,5 @@ class InputForm extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
