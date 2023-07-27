@@ -11,7 +11,7 @@ class AuthRepository {
   AuthRepository(this.firebaseAuth);
   final FirebaseAuth firebaseAuth;
 
-  Future<void> signIn({
+  Future<dynamic> signIn({
     required String email,
     required String password,
   }) async {
