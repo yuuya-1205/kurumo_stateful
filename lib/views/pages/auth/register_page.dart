@@ -114,9 +114,6 @@ class ResisterPage extends ConsumerWidget {
               const SizedBox(
                 height: 16,
               ),
-              const SizedBox(
-                height: 32,
-              ),
             ],
           ),
         ),

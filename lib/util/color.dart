@@ -8,4 +8,8 @@ class ColorManager {
   static const disPrimary = Color.fromRGBO(254, 197, 111, 1);
   static const fillGray = Color.fromRGBO(240, 240, 240, 1);
   static const textGray = Color.fromRGBO(131, 124, 124, 1);
+
+  ///これを入れると関数で表示されない。
+  ///消すのめんどくさいから
+  ColorManager._();
 }

@@ -5,7 +5,7 @@ import 'package:kurumo_stateful/repositories/auth_repository.dart';
 import 'package:kurumo_stateful/util/color.dart';
 import 'package:kurumo_stateful/views/components/button.dart';
 import 'package:kurumo_stateful/views/components/input_form.dart';
-import 'package:kurumo_stateful/views/pages/auth/register_page.dart';
+import 'package:kurumo_stateful/views/pages/auth/register_trader_info_page.dart';
 import 'package:kurumo_stateful/views/pages/top/top_page.dart';
 
 final emailProvider = StateProvider((ref) {
@@ -66,6 +66,13 @@ class LoginPage extends ConsumerWidget {
                 icon: Icons.hide_source_outlined,
                 hintText: "パスワード",
                 labelText: "パスワード",
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                errorMessage,
+                style: const TextStyle(color: Colors.red),
               ),
               const SizedBox(
                 height: 16,
@@ -140,7 +147,7 @@ class LoginPage extends ConsumerWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => const ResisterPage()),
+                      builder: ((context) => const RegisterTraderInfoPage()),
                     ),
                   );
                 },
@@ -154,15 +161,4 @@ class LoginPage extends ConsumerWidget {
       ),
     );
   }
-
-  ///状態を破棄するために用いる。
-  ///disposeがないと状態を持ったまま
-  ///再描画が行われることもあるのでバグになりやすいの？
-  ///
-  // late AuthRepository firebaseAuth;
-
-  //処理をまとめる。
-  //disposeもここに書く
-
-  ///setStateで呼ばれたら上から順番に再描画する。
 }
