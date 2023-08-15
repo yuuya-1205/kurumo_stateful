@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final firebaseAuthProvider =
@@ -13,3 +14,7 @@ final firebaseFirestoreProvider =
 final userProvider = StreamProvider(
   (ref) => FirebaseAuth.instance.authStateChanges(),
 );
+
+final textEditingControllerProvider = StateProvider.autoDispose((ref) {
+  return TextEditingController();
+});

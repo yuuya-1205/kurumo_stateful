@@ -14,7 +14,9 @@ void main() async {
   );
   runApp(ProviderScope(
     overrides: [
-      firebaseFirestoreProvider.overrideWithValue(FakeFirebaseFirestore()),
+      firebaseFirestoreProvider.overrideWithValue(
+        FakeFirebaseFirestore(),
+      ),
     ],
     child: const MyApp(),
   ));
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: ColorManager.primary,
+        primaryColor: primary,
         useMaterial3: false,
       ),
       home: const LoginPage(),

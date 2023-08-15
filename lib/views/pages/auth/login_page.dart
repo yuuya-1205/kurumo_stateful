@@ -63,7 +63,7 @@ class LoginPage extends ConsumerWidget {
               ),
               InputForm(
                 controller: passwordController,
-                icon: Icons.hide_source_outlined,
+                suffixIcon: Icons.hide_source_outlined,
                 hintText: "パスワード",
                 labelText: "パスワード",
               ),
@@ -114,7 +114,7 @@ class LoginPage extends ConsumerWidget {
                     }
                   }
                 },
-                backgroundColor: ColorManager.primary,
+                backgroundColor: primary,
                 text: "ログイン",
               ),
               const SizedBox(
@@ -128,7 +128,7 @@ class LoginPage extends ConsumerWidget {
               ),
               Button(
                 onPressed: () {},
-                backgroundColor: ColorManager.primary,
+                backgroundColor: primary,
                 text: "Google",
               ),
               const SizedBox(
@@ -136,7 +136,7 @@ class LoginPage extends ConsumerWidget {
               ),
               Button(
                 onPressed: () {},
-                backgroundColor: ColorManager.primary,
+                backgroundColor: primary,
                 text: "Apple",
               ),
               const SizedBox(

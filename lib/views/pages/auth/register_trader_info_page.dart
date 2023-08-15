@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kurumo_stateful/providers/firebase_provider/firebase_provider.dart';
 import 'package:kurumo_stateful/util/color.dart';
 import 'package:kurumo_stateful/views/components/button.dart';
 import 'package:kurumo_stateful/views/components/input_form.dart';
-
-final traderSurNameProvider = StateProvider((ref) {
-  return TextEditingController();
-});
-
-final traderPersonalNameProvider = StateProvider((ref) {
-  return TextEditingController();
-});
 
 class RegisterTraderInfoPage extends ConsumerWidget {
   const RegisterTraderInfoPage({super.key});
@@ -19,8 +12,9 @@ class RegisterTraderInfoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final traderSurNameController = ref.watch(traderSurNameProvider);
-    final traderPersonalNameController = ref.watch(traderPersonalNameProvider);
+    final traderSurNameController = ref.watch(textEditingControllerProvider);
+    final traderPersonalNameController =
+        ref.watch(textEditingControllerProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +55,7 @@ class RegisterTraderInfoPage extends ConsumerWidget {
                 onPressed: () {
                   //  final trader = Trader();
                 },
-                backgroundColor: ColorManager.primary,
+                backgroundColor: primary,
                 text: "アカウント作成",
               ),
             ],

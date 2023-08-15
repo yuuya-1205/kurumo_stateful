@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kurumo_stateful/providers/firebase_provider/firebase_provider.dart';
 import 'package:kurumo_stateful/util/color.dart';
 import 'package:kurumo_stateful/views/components/button.dart';
 import 'package:kurumo_stateful/views/components/input_form.dart';
@@ -8,21 +9,13 @@ import 'package:kurumo_stateful/views/pages/top/top_page.dart';
 
 import '../../../repositories/auth_repository.dart';
 
-final emailProvider = StateProvider((ref) {
-  return TextEditingController();
-});
-
-final passwordProvider = StateProvider((ref) {
-  return TextEditingController();
-});
-
 class ResisterPage extends ConsumerWidget {
   const ResisterPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final emailController = ref.watch(emailProvider);
-    final passwordController = ref.watch(passwordProvider);
+    final emailController = ref.watch(textEditingControllerProvider);
+    final passwordController = ref.watch(textEditingControllerProvider);
     final firebaseAuth = ref.watch(authRepositoryProvider);
     String errorMessage = '';
 
@@ -63,7 +56,7 @@ class ResisterPage extends ConsumerWidget {
               ),
               InputForm(
                 controller: passwordController,
-                icon: Icons.hide_source_outlined,
+                suffixIcon: Icons.hide_source_outlined,
                 hintText: "パスワード",
                 labelText: "パスワード",
               ),
@@ -71,7 +64,7 @@ class ResisterPage extends ConsumerWidget {
                 height: 8,
               ),
               const InputForm(
-                icon: Icons.hide_source_outlined,
+                suffixIcon: Icons.hide_source_outlined,
                 hintText: "パスワード確認",
                 labelText: "パスワード確認",
               ),
@@ -108,7 +101,7 @@ class ResisterPage extends ConsumerWidget {
                     }
                   }
                 },
-                backgroundColor: ColorManager.primary,
+                backgroundColor: primary,
                 text: "新規登録",
               ),
               const SizedBox(
